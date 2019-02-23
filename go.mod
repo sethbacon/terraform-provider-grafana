@@ -7,3 +7,5 @@ require (
 	github.com/nytm/go-grafana-api v0.0.0-20181022152830-9cc848df7385
 	github.com/stretchr/testify v1.3.0 // indirect
 )
+
+replace github.com/nytm/go-grafana-api => github.com/radeksimko/go-grafana-api v0.0.0-20190223085812-163245446e18

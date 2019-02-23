@@ -110,6 +110,7 @@ github.com/hashicorp/hil/scanner
 github.com/hashicorp/logutils
 # github.com/hashicorp/terraform v0.12.0-alpha4.0.20190114221020-778cf445d42f
 github.com/hashicorp/terraform/plugin
+github.com/hashicorp/terraform/helper/logging
 github.com/hashicorp/terraform/helper/schema
 github.com/hashicorp/terraform/terraform
 github.com/hashicorp/terraform/configs/configschema
@@ -147,7 +148,6 @@ github.com/hashicorp/terraform/lang/funcs
 github.com/hashicorp/terraform/command/format
 github.com/hashicorp/terraform/configs/configload
 github.com/hashicorp/terraform/helper/config
-github.com/hashicorp/terraform/helper/logging
 github.com/hashicorp/terraform/internal/initwd
 github.com/hashicorp/terraform/svchost
 github.com/hashicorp/terraform/svchost/auth
@@ -179,7 +179,7 @@ github.com/mitchellh/hashstructure
 github.com/mitchellh/mapstructure
 # github.com/mitchellh/reflectwalk v0.0.0-20170726202117-63d60e9d0dbc
 github.com/mitchellh/reflectwalk
-# github.com/nytm/go-grafana-api v0.0.0-20181022152830-9cc848df7385
+# github.com/nytm/go-grafana-api v0.0.0-20181022152830-9cc848df7385 => github.com/radeksimko/go-grafana-api v0.0.0-20190223085812-163245446e18
 github.com/nytm/go-grafana-api
 # github.com/oklog/run v1.0.0
 github.com/oklog/run
