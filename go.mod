@@ -6,3 +6,5 @@ require (
 	github.com/hashicorp/terraform v0.12.2
 	github.com/nytm/go-grafana-api v0.0.0-20181022152830-9cc848df7385
 )
+
+go 1.13
