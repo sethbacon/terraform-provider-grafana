@@ -21,7 +21,7 @@ func TestAccAlertNotification_basic(t *testing.T) {
 		CheckDestroy: testAccAlertNotificationCheckDestroy(&alertNotification),
 		Steps: []resource.TestStep{
 			{
-				Config: testAccAlertNotificationConfig_basic,
+				Config: testAccAlertNotificationConfigbasic,
 				Check: resource.ComposeTestCheckFunc(
 					testAccAlertNotificationCheckExists("grafana_alert_notification.test", &alertNotification),
 					resource.TestCheckResourceAttr(
@@ -78,7 +78,7 @@ func testAccAlertNotificationCheckDestroy(a *gapi.AlertNotification) resource.Te
 	}
 }
 
-const testAccAlertNotificationConfig_basic = `
+const testAccAlertNotificationConfigbasic = `
 resource "grafana_alert_notification" "test" {
     type = "email"
     name = "terraform-acc-test"
