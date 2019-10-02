@@ -1,6 +1,7 @@
 package grafana
 
 import (
+	"github.com/hashicorp/terraform/helper/logging"
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
 
@@ -31,6 +32,7 @@ func Provider() terraform.ResourceProvider {
 			"grafana_data_source":        ResourceDataSource(),
 			"grafana_folder":             ResourceFolder(),
 			"grafana_organization":       ResourceOrganization(),
+			"grafana_team":               ResourceTeam(),
 		},
 
 		ConfigureFunc: providerConfigure,
@@ -38,8 +40,15 @@ func Provider() terraform.ResourceProvider {
 }
 
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
-	return gapi.New(
+	client, err := gapi.New(
 		d.Get("auth").(string),
 		d.Get("url").(string),
 	)
+	if err != nil {
+		return nil, err
+	}
+
+	client.Transport = logging.NewTransport("Grafana", client.Transport)
+
+	return client, nil
 }
