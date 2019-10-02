@@ -1,4 +1,11 @@
-## 1.6.0 (Unreleased)
+# CHANGELOG
+
+## 1.5.1 (October 2, 2019)
+
+FEATURES:
+
+* **New Resource:** `grafana_team`
+
 ## 1.5.0 (June 26, 2019)
 
 IMPROVEMENTS
@@ -34,6 +41,7 @@ BUG FIXES:
 ## 1.2.0 (August 01, 2018)
 
 FEATURES:
+
 * **New Resource:** `grafana_resource_organization` ([#29](https://github.com/terraform-providers/terraform-provider-grafana/issues/29))
 
 ## 1.1.0 (July 27, 2018)

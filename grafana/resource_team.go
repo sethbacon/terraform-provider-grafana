@@ -27,6 +27,10 @@ func ResourceTeam() *schema.Resource {
 				Type:     schema.TypeString,
 				Required: true,
 			},
+			"email": &schema.Schema{
+				Type:     schema.TypeString,
+				Optional: true,
+			},
 			"members": &schema.Schema{
 				Type:     schema.TypeSet,
 				Optional: true,
@@ -51,7 +55,7 @@ func CreateTeam(d *schema.ResourceData, meta interface{}) error {
 	id := strconv.FormatInt(resp.Id, 10)
 	d.SetId(id)
 	d.Set("name", model)
-
+	d.Set("email",model)
 	// Process members
 	set := d.Get("members").(*schema.Set)
 	for _, v := range set.List() {
@@ -67,14 +71,20 @@ func CreateTeam(d *schema.ResourceData, meta interface{}) error {
 func UpdateTeam(d *schema.ResourceData, meta interface{}) error {
 	client := meta.(*gapi.Client)
 	teamId := d.Id()
+	name := d.Get("name").(string)
+	email := d.Get("email").(string)
 	if d.HasChange("name") {
-		name := d.Get("name").(string)
-		err := client.UpdateTeam(teamId, name)
+		err := client.UpdateTeam(teamId, name, email)
 		if err != nil {
 			return err
 		}
 	}
-
+	if d.HasChange("email") {
+		err := client.UpdateTeam(teamId, name, email)
+		if err != nil {
+			return err
+		}
+	}
 	memberList, err := getTeamMembers(d, meta)
 	if err != nil {
 		return err
@@ -157,6 +167,7 @@ func ReadTeam(d *schema.ResourceData, meta interface{}) error {
 
 	d.SetId(strconv.FormatInt(team.Id, 10))
 	d.Set("name", team.Name)
+	d.Set("email", team.Email)
 
 	// deal with team members
 	memberList, err := getTeamMembers(d, meta)
